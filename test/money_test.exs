@@ -1,7 +1,5 @@
 defmodule MoneyTest do
   use ExUnit.Case
-  require Dollar
-  require Franc
 
   test "testMultiplication()" do
     five = %Dollar{amount: 5}
@@ -12,6 +10,9 @@ defmodule MoneyTest do
   test "testEquality()" do
     assert Dollar.equals(%Dollar{amount: 5}, %Dollar{amount: 5}) == true
     refute Dollar.equals(%Dollar{amount: 5}, %Dollar{amount: 6}) == true
+    assert Franc.equals(%Franc{amount: 5}, %Franc{amount: 5}) == true
+    refute Franc.equals(%Franc{amount: 5}, %Franc{amount: 6}) == true
+    refute Franc.equals(%Franc{amount: 5}, %Dollar{amount: 5}) == true
   end
 
   test "testFrancMultiplication()" do
